@@ -46,6 +46,8 @@
 
   });
 
+
+
   /**
    * Toggle mobile nav dropdowns
    */
@@ -141,5 +143,13 @@
       faqItem.parentNode.classList.toggle('faq-active');
     });
   });
+  const carousel = document.getElementById('carousel');
+  const images = carousel.querySelectorAll('img');
+  let index = 0;
+
+  setInterval(() => {
+    index = (index + 1) % images.length;
+    carousel.style.transform = `translateX(-${index * 100}%)`;
+  }, 3800); // más lento
 
 })();

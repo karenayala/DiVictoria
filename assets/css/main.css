@@ -13,7 +13,7 @@
 /* Fonts */
 :root {
   --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Poppins",  sans-serif;
+  --heading-font: "Georgia",  sans-serif; 
   --nav-font: "Poppins",  sans-serif;
 }
 
@@ -66,6 +66,7 @@ body {
   font-family: var(--default-font);
 }
 
+
 a {
   color: var(--accent-color);
   text-decoration: none;
@@ -76,7 +77,12 @@ a:hover {
   color: color-mix(in srgb, var(--accent-color), transparent 25%);
   text-decoration: none;
 }
-
+h1 {
+  font-size: 3rem; /* o 48px */
+  font-weight: 700;
+  line-height: 1.2;
+  font-family: 'Georgia', serif; /* o una tipografía elegante como 'Playfair Display' */
+}
 h1,
 h2,
 h3,
@@ -1998,9 +2004,28 @@ section,
   background: color-mix(in srgb, var(--accent-color), transparent 20%);
 }
 
-/*--------------------------------------------------------------
-# Starter Section Section
---------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
+.carousel-container {
+  width: 100%;
+  max-height: 500px;
+  overflow: hidden;
+  position: relative;
+  background-color: #000;
+}
+
+.carousel {
+  display: flex;
+  height: 100%;
+  transition: transform 1s ease-in-out;
+}
+
+.carousel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* cambia a 'contain' si quieres mostrar toda la imagen */
+  flex-shrink: 0;
+}
+
+.carousel-container {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
 }
