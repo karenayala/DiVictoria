@@ -2041,3 +2041,61 @@ section,
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
 }
+
+/* Estilos Generales para FAQ */
+.faq {
+  background-color: #f9fafb;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.faq .accordion-button {
+  background-color: #003366;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.faq .accordion-button:hover {
+  background-color: #00509e;
+}
+
+.faq .accordion-button:focus {
+  box-shadow: none;
+}
+
+.faq .accordion-button:not(.collapsed) {
+  background-color: #00509e;
+}
+
+.faq .accordion-body {
+  background-color: #ffffff;
+  padding: 20px;
+  font-size: 1rem;
+  color: #555;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  font-family: 'Arial', sans-serif;
+}
+
+.faq h2 {
+  font-family: 'Georgia', serif;
+  color: #003366;
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+
+.faq p.lead {
+  color: #555;
+  font-size: 1.1rem;
+}
+
+.faq .accordion-item + .accordion-item {
+  margin-top: 15px;
+}
+
+.faq .container {
+  max-width: 1000px;
+}
