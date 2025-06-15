@@ -1017,6 +1017,7 @@ section,
 }
 
 .featured-services .service-item .description {
+  text-align: justify;
   font-size: 15px;
   color: color-mix(in srgb, var(--default-color), transparent 30%);
   margin-bottom: 10px;
