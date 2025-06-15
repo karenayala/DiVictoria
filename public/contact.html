@@ -108,42 +108,89 @@
               <i class="bi bi-envelope flex-shrink-0"></i>
               <div>
                 <h3>ENVÍANOS UN CORREO</h3>
-                <p>dianagonzalezabogada@gmail.com</p>
+              
               </div>
             </div><!-- End Info Item -->
 
           </div>
 
           <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-              <div class="row gy-4">
+<form id="contact-form" action="https://formsubmit.co/karen.ayala.suarez@gmail.com" method="POST" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+  <!-- No mostrar CAPTCHA -->
+  <input type="hidden" name="_captcha" value="false">
 
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Tu Nombre" required="">
-                </div>
+  <div class="row gy-4">
+    <div class="col-md-6">
+      <input type="text" name="name" class="form-control" placeholder="Tu Nombre" required>
+    </div>
 
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Tu Correo" required="">
-                </div>
+    <div class="col-md-6">
+      <input type="email" name="email" class="form-control" placeholder="Tu Correo" required>
+    </div>
 
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Asunto" required="">
-                </div>
+    <div class="col-md-12">
+      <input type="text" name="subject" class="form-control" placeholder="Asunto" required>
+    </div>
 
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Mensaje" required=""></textarea>
-                </div>
+    <div class="col-md-12">
+      <textarea name="message" class="form-control" rows="6" placeholder="Mensaje" required></textarea>
+    </div>
 
-                <div class="col-md-12 text-center">
-                  <div class="loading">Enviando</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Su mensaje fu enviado. Gracias!</div>
+    <div class="col-md-12 text-center">
+      <div class="loading" style="display:none;">Enviando...</div>
+      <div class="error-message" style="display:none; color: red;"></div>
+      <div class="sent-message" style="display:none; color: green;">¡Tu mensaje fue enviado. Gracias!</div>
+      <button type="submit">Enviar mensaje</button>
+    </div>
+  </div>
+</form>
 
-                  <button type="submit">Enviar mensaje</button>
-                </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contact-form");
+    const loading = form.querySelector(".loading");
+    const sentMessage = form.querySelector(".sent-message");
+    const errorMessage = form.querySelector(".error-message");
 
-              </div>
-            </form>
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Mostrar el mensaje de carga y ocultar los otros
+      loading.style.display = "block";
+      sentMessage.style.display = "none";
+      errorMessage.style.display = "none";
+
+      const formData = new FormData(form);
+
+      fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => {
+        loading.style.display = "none";
+        if (response.ok) {
+          sentMessage.style.display = "block";
+          form.reset();
+        } else {
+          return response.json().then(data => {
+            errorMessage.innerText = data.errors?.map(e => e.message).join(", ") || "Error al enviar el formulario.";
+            errorMessage.style.display = "block";
+          });
+        }
+      })
+      .catch(() => {
+        loading.style.display = "none";
+        errorMessage.innerText = "Error de red o servidor. Intenta nuevamente.";
+        errorMessage.style.display = "block";
+      });
+    });
+  });
+</script>
+
+
           </div><!-- End Contact Form -->
 
         </div>
@@ -187,7 +234,7 @@
             <li><a>Bogotá DC</a></li>
             <li><a>Colombia</a></li>
             <li><a>telefono: +573006329347</a></li>
-            <li><a>Correo: dianagonzalezabogada@gmail.com</a></li>
+            
           </ul>
         </div>
                
@@ -223,6 +270,40 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+<style>
+  .whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+  }
+  .whatsapp-button a {
+    display: inline-block;
+    background-color: #25D366;
+    color: white !important;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+  }
+  .whatsapp-button a:hover {
+    background-color: #1da851;
+  }
+</style>
+
+<div class="whatsapp-button">
+  <a href="https://wa.me/573223324178?text=Hola%20estoy%20interesado%20en..." target="_blank" aria-label="Contacto por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</div>
+
+<!-- Si no usas Font Awesome en tu sitio, descomenta esta línea -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> 
 
 </body>
 

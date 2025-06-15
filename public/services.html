@@ -331,7 +331,41 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+<!-- Botón flotante de WhatsApp -->
+<style>
+  .whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+  }
+  .whatsapp-button a {
+    display: inline-block;
+    background-color: #25D366;
+    color: white !important;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+  }
+  .whatsapp-button a:hover {
+    background-color: #1da851;
+  }
+</style>
 
+<div class="whatsapp-button">
+  <a href="https://wa.me/573223324178?text=Hola%20estoy%20interesado%20en..." target="_blank" aria-label="Contacto por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</div>
+
+<!-- Si no usas Font Awesome en tu sitio, descomenta esta línea -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> -->
 </body>
 
 </html>
